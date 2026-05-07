@@ -295,24 +295,44 @@ footer strong { color: rgba(255,255,255,0.8); }
 
   <div class="kpi-grid">
     <div class="kpi c-red">
-      <div class="kpi-label">Taux de chômage</div>
-      <div class="kpi-value">14,4 <sup>%</sup></div>
-      <div class="kpi-delta warn">▲ Moy. pondérée CAPSO · France : 7,3% (BIT 2022) · Source : INSEE RP2022</div>
+      <div class="kpi-label">Taux de chômage moyen</div>
+      <div class="kpi-value">14,1 <sup>%</sup></div>
+      <div class="kpi-delta warn">▲ +6.8 pt vs France BIT (7,3%)</div>
     </div>
-    <div class="kpi c-blue">
-      <div class="kpi-label">Créations d'entreprises</div>
-      <div class="kpi-value">1 247</div>
-      <div class="kpi-delta good">↑ +8,2% sur 12 mois glissants</div>
-    </div>
-    <div class="kpi c-green">
-      <div class="kpi-label">Offres d'emploi actives</div>
-      <div class="kpi-value">2 834</div>
-      <div class="kpi-delta neu">→ Stable vs. trimestre précédent</div>
+    <div class="kpi c-red">
+      <div class="kpi-label">Taux de pauvreté moyen</div>
+      <div class="kpi-value">21,0 <sup>%</sup></div>
+      <div class="kpi-delta warn">▲ +6.6 pt vs France (14,4%)</div>
     </div>
     <div class="kpi c-gold">
-      <div class="kpi-label">Population active</div>
-      <div class="kpi-value">58 400</div>
-      <div class="kpi-delta warn">▼ −0,4% sur 2 ans (INSEE 2022)</div>
+      <div class="kpi-label">Communes en déclin démo.</div>
+      <div class="kpi-value">24<span style="font-size:16px"> / 50</span></div>
+      <div class="kpi-delta warn">▼ Perte de population 2016→2022</div>
+    </div>
+    <div class="kpi c-blue">
+      <div class="kpi-label">Vacance logements (moy.)</div>
+      <div class="kpi-value">7,0 <sup>%</sup></div>
+      <div class="kpi-delta warn">▲ +-1.2 pt vs France (8,2%)</div>
+    </div>
+    <div class="kpi c-blue">
+      <div class="kpi-label">Établissements actifs</div>
+      <div class="kpi-value">2,796</div>
+      <div class="kpi-delta neu">→ Fin 2024 — Source INSEE Flores</div>
+    </div>
+    <div class="kpi c-green">
+      <div class="kpi-label">Communes en croissance</div>
+      <div class="kpi-value">26<span style="font-size:16px"> / 50</span></div>
+      <div class="kpi-delta good">▲ Gain de population 2016→2022</div>
+    </div>
+    <div class="kpi c-gold">
+      <div class="kpi-label">Population totale CAPSO</div>
+      <div class="kpi-value">92<span style="font-size:16px">k hab</span></div>
+      <div class="kpi-delta neu">→ INSEE RP2022 · 50 communes</div>
+    </div>
+    <div class="kpi c-red">
+      <div class="kpi-label">Taux d'imposition médian</div>
+      <div class="kpi-value">40 <sup>%</sup></div>
+      <div class="kpi-delta warn">▼ 60% des ménages non imposés</div>
     </div>
   </div>
 
@@ -332,6 +352,25 @@ footer strong { color: rgba(255,255,255,0.8); }
         <canvas id="c2" role="img" aria-label="Répartition des offres d'emploi par secteur : Industrie 34%, Commerce 22%"></canvas>
       </div>
       <div class="source-tag">📊 France Travail — Statistiques marché du travail 2025</div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <div class="section-title">Vacance des logements</div>
+      <div class="section-sub">Part des logements vacants en 2022 — top 8 communes · France : 8,2%</div>
+      <div style="position:relative;height:220px;">
+        <canvas id="cVac" role="img" aria-label="Taux de vacance logements par commune"></canvas>
+      </div>
+      <div class="source-tag">📊 INSEE RP2022 — P22_LOGVAC / P22_LOG</div>
+    </div>
+    <div class="card">
+      <div class="section-title">Dynamique démographique</div>
+      <div class="section-sub">Évolution de la population 2016→2022 · 4 communes en plus forte baisse / hausse</div>
+      <div style="position:relative;height:220px;">
+        <canvas id="cEvol" role="img" aria-label="Evolution démographique des communes 2016 à 2022"></canvas>
+      </div>
+      <div class="source-tag">📊 INSEE RP2016 & RP2022</div>
     </div>
   </div>
 
@@ -425,16 +464,18 @@ footer strong { color: rgba(255,255,255,0.8); }
           <th onclick="sortTable(1)">Population ↕</th>
           <th onclick="sortTable(2)">Chômage ↕</th>
           <th onclick="sortTable(3)">Pauvreté ↕</th>
-          <th onclick="sortTable(4)">Niveau de vie médian ↕</th>
-          <th onclick="sortTable(5)">Tendance pop. ↕</th>
-          <th onclick="sortTable(6)">Établissements ↕</th>
+          <th onclick="sortTable(4)">Revenu médian ↕</th>
+          <th onclick="sortTable(5)">Logements vacants ↕</th>
+          <th onclick="sortTable(6)">% Propriétaires ↕</th>
+          <th onclick="sortTable(7)">Évol. pop. 2016→2022 ↕</th>
+          <th onclick="sortTable(8)">Établissements ↕</th>
         </tr>
       </thead>
       <tbody id="communesTbody"></tbody>
     </table>
     </div>
     <div style="padding:12px 16px; font-size:11px; color:var(--muted); border-top:1px solid var(--border);">
-      Données 100% INSEE RP2022 · 50 communes CAPSO · Noms cliquables → fiche INSEE officielle · Taux de chômage = chômeurs recensés / actifs recensés
+      Données 100% INSEE RP2022 · 50 communes CAPSO · 92,112 habitants · Noms cliquables → fiche INSEE officielle · Taux de chômage = chômeurs recensés / actifs recensés
     </div>
   </div>
 </div>
@@ -620,6 +661,49 @@ const DATA_YEARS = {
 };
 
 // Chômage bar
+
+new Chart(document.getElementById('cVac'),{
+  type:'bar',
+  data:{
+    labels:['Bayenghem-lès-Éperlecques', 'Saint-Omer', 'Esquerdes', 'Renty', 'Vaudringhem', 'Heuringhem', 'Wizernes', 'Aire-sur-la-Lys'],
+    datasets:[
+      {label:'Vacance %',data:[17.1, 13.7, 13.6, 12.3, 12.3, 11.2, 11.1, 10.9],backgroundColor:'#2E5FA3',borderRadius:4},
+      {type:'line',label:'Moy. France (8.2%)',data:[8.2, 8.2, 8.2, 8.2, 8.2, 8.2, 8.2, 8.2],borderColor:'#C9A84C',borderDash:[5,3],borderWidth:1.5,pointRadius:0,fill:false}
+    ]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.dataset.label+': '+c.parsed.y.toFixed(1)+'%'}}},
+    scales:{
+      x:{grid:{display:false},ticks:{font:{size:9},maxRotation:35}},
+      y:{grid:{color:'rgba(0,0,0,0.05)'},ticks:{callback:v=>v+'%',font:{size:10}},min:0,max:20}
+    }
+  }
+});
+
+new Chart(document.getElementById('cEvol'),{
+  type:'bar',
+  data:{
+    labels:['Elnes', 'Acquin-Westbécourt', 'Rely', 'Moringhem', 'Blendecques', 'Nielles-lès-Blequin', 'Wardrecques', 'Saint-Martin-au-Laërt'],
+    datasets:[{
+      label:'Évolution %',
+      data:[-9.4, -9.2, -6.7, -4.8, 11.3, 13.3, 19.2, 20.0],
+      backgroundColor:['#C0392B', '#C0392B', '#C0392B', '#C0392B', '#27AE60', '#27AE60', '#27AE60', '#27AE60'],
+      borderRadius:4
+    }]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y.toFixed(1)+'%'}}},
+    scales:{
+      x:{grid:{display:false},ticks:{font:{size:9},maxRotation:35}},
+      y:{grid:{color:'rgba(0,0,0,0.05)'},ticks:{callback:v=>v+'%',font:{size:10}},
+         min:-11,
+         max:22}
+    }
+  }
+});
+
 new Chart(document.getElementById('c1'),{
   type:'bar',
   data:{
@@ -687,56 +771,56 @@ function setYear(y,btn){
 
 // Communes data
 const communes = [
-  {name:'Bayenghem-lès-Éperlecques',pop:2549,chomage:24.8,pauvrete:'28.0%',mediane:'18,150 €',etab:79,trend:'up',code:'62060'},
-  {name:'Saint-Omer',pop:14358,chomage:21.1,pauvrete:'29.0%',mediane:'18,120 €',etab:664,trend:'up',code:'62765'},
-  {name:'Longuenesse',pop:10559,chomage:20.1,pauvrete:'23.0%',mediane:'19,380 €',etab:338,trend:'up',code:'62525'},
-  {name:'Wizernes',pop:138,chomage:18.2,pauvrete:'N/D',mediane:'21,270 €',etab:3,trend:'down',code:'62891'},
-  {name:'Bomy',pop:215,chomage:16.7,pauvrete:'N/D',mediane:'19,720 €',etab:3,trend:'up',code:'62109'},
-  {name:'Helfaut',pop:4974,chomage:15.9,pauvrete:'23.0%',mediane:'18,570 €',etab:55,trend:'down',code:'62400'},
-  {name:'Aire-sur-la-Lys',pop:9568,chomage:15.5,pauvrete:'19.0%',mediane:'20,730 €',etab:339,trend:'up',code:'62014'},
-  {name:'Renty',pop:247,chomage:15.5,pauvrete:'N/D',mediane:'20,620 €',etab:7,trend:'down',code:'62723'},
-  {name:'Arques',pop:9526,chomage:13.8,pauvrete:'20.0%',mediane:'19,590 €',etab:304,trend:'up',code:'62040'},
-  {name:'Dennebrœucq',pop:222,chomage:13.7,pauvrete:'N/D',mediane:'21,510 €',etab:4,trend:'down',code:'62234'},
-  {name:'Moulle',pop:87,chomage:13.5,pauvrete:'N/D',mediane:'N/D',etab:3,trend:'up',code:'62593'},
-  {name:'Cléty',pop:1766,chomage:12.1,pauvrete:'N/D',mediane:'20,790 €',etab:28,trend:'up',code:'62197'},
-  {name:'Esquerdes',pop:337,chomage:11.9,pauvrete:'N/D',mediane:'19,540 €',etab:5,trend:'down',code:'62304'},
-  {name:'Lumbres',pop:3577,chomage:11.5,pauvrete:'19.0%',mediane:'19,780 €',etab:117,trend:'up',code:'62534'},
-  {name:'Vaudringhem',pop:243,chomage:11.3,pauvrete:'N/D',mediane:'21,440 €',etab:7,trend:'up',code:'62855'},
-  {name:'Nielles-lès-Blequin',pop:1081,chomage:11.0,pauvrete:'N/D',mediane:'21,170 €',etab:13,trend:'down',code:'62603'},
-  {name:'Elnes',pop:847,chomage:10.9,pauvrete:'N/D',mediane:'20,940 €',etab:7,trend:'up',code:'62292'},
-  {name:'Blequin',pop:1000,chomage:10.2,pauvrete:'N/D',mediane:'23,930 €',etab:36,trend:'down',code:'62097'},
-  {name:'Remilly-Wirquin',pop:3007,chomage:10.1,pauvrete:'19.0%',mediane:'20,320 €',etab:71,trend:'down',code:'62711'},
-  {name:'Mentque-Nortbécourt',pop:313,chomage:9.9,pauvrete:'N/D',mediane:'22,020 €',etab:2,trend:'down',code:'62556'},
-  {name:'Mametz',pop:1985,chomage:9.7,pauvrete:'N/D',mediane:'21,350 €',etab:33,trend:'up',code:'62543'},
-  {name:'Tournehem-sur-la-Hem',pop:288,chomage:9.5,pauvrete:'N/D',mediane:'22,200 €',etab:10,trend:'down',code:'62831'},
-  {name:'Tilques',pop:824,chomage:9.0,pauvrete:'N/D',mediane:'19,880 €',etab:21,trend:'up',code:'62812'},
-  {name:'Hallines',pop:661,chomage:8.9,pauvrete:'N/D',mediane:'21,480 €',etab:18,trend:'down',code:'62382'},
-  {name:'Bellinghem',pop:1321,chomage:8.8,pauvrete:'N/D',mediane:'25,490 €',etab:26,trend:'down',code:'62075'},
-  {name:'Rely',pop:1493,chomage:8.5,pauvrete:'N/D',mediane:'23,380 €',etab:109,trend:'up',code:'62727'},
-  {name:'Dohem',pop:479,chomage:8.4,pauvrete:'N/D',mediane:'23,350 €',etab:9,trend:'down',code:'62248'},
-  {name:'Enguinegatte',pop:510,chomage:8.4,pauvrete:'N/D',mediane:'23,280 €',etab:7,trend:'down',code:'62286'},
-  {name:'Éperlecques',pop:1600,chomage:8.3,pauvrete:'N/D',mediane:'20,530 €',etab:22,trend:'up',code:'62295'},
-  {name:'Saint-Martin-au-Laërt',pop:527,chomage:8.3,pauvrete:'N/D',mediane:'24,370 €',etab:9,trend:'down',code:'62754'},
-  {name:'Houlle',pop:1389,chomage:8.2,pauvrete:'N/D',mediane:'25,220 €',etab:17,trend:'down',code:'62452'},
-  {name:'Quercamps',pop:454,chomage:8.2,pauvrete:'N/D',mediane:'25,370 €',etab:3,trend:'down',code:'62660'},
-  {name:'Tatinghem',pop:376,chomage:8.1,pauvrete:'N/D',mediane:'21,290 €',etab:9,trend:'down',code:'62800'},
-  {name:'Blendecques',pop:5076,chomage:7.9,pauvrete:'9.0%',mediane:'23,260 €',etab:106,trend:'down',code:'62132'},
-  {name:'Heuringhem',pop:319,chomage:7.9,pauvrete:'N/D',mediane:'20,570 €',etab:11,trend:'up',code:'62437'},
-  {name:'Clairmarais',pop:244,chomage:7.3,pauvrete:'N/D',mediane:'24,050 €',etab:4,trend:'up',code:'62221'},
-  {name:'Fléchín',pop:604,chomage:7.3,pauvrete:'N/D',mediane:'25,750 €',etab:48,trend:'down',code:'62355'},
-  {name:'Ouve-Wirquin',pop:496,chomage:7.3,pauvrete:'N/D',mediane:'20,600 €',etab:10,trend:'up',code:'62644'},
-  {name:'Pihem',pop:928,chomage:7.2,pauvrete:'N/D',mediane:'23,920 €',etab:15,trend:'up',code:'62656'},
-  {name:'Racquinghem',pop:711,chomage:7.0,pauvrete:'N/D',mediane:'26,470 €',etab:21,trend:'up',code:'62680'},
-  {name:'Campagne-lès-Wardrecques',pop:1300,chomage:6.6,pauvrete:'N/D',mediane:'23,910 €',etab:43,trend:'down',code:'62205'},
-  {name:'Moringhem',pop:579,chomage:6.4,pauvrete:'N/D',mediane:'19,930 €',etab:11,trend:'up',code:'62583'},
-  {name:'Wardrecques',pop:1061,chomage:6.4,pauvrete:'N/D',mediane:'25,470 €',etab:26,trend:'down',code:'62905'},
-  {name:'Acquin-Westbécourt',pop:579,chomage:6.1,pauvrete:'N/D',mediane:'27,470 €',etab:6,trend:'up',code:'62003'},
-  {name:'Nordausques',pop:62,chomage:6.1,pauvrete:'N/D',mediane:'N/D',etab:7,trend:'up',code:'62607'},
-  {name:'Laires',pop:1049,chomage:6.0,pauvrete:'N/D',mediane:'25,030 €',etab:16,trend:'down',code:'62476'},
-  {name:'Febvin-Palfart',pop:343,chomage:5.9,pauvrete:'N/D',mediane:'24,480 €',etab:5,trend:'up',code:'62315'},
-  {name:'Louches',pop:1630,chomage:5.6,pauvrete:'N/D',mediane:'28,250 €',etab:39,trend:'down',code:'62529'},
-  {name:'Leulinghem',pop:263,chomage:4.1,pauvrete:'N/D',mediane:'23,840 €',etab:37,trend:'down',code:'62504'},
-  {name:'Clerques',pop:347,chomage:3.8,pauvrete:'N/D',mediane:'25,930 €',etab:13,trend:'down',code:'62198'}
+  {name:'Bayenghem-lès-Éperlecques',pop:2549,chomage:24.8,pauvrete:'28.0%',mediane:'18,150 €',logvac:'17.1%',prop:'56.1%',imposition:'33.0%',evol_pop:'-4.7%',solde:-42,etab:79,trend:'up',code:'62060'},
+  {name:'Saint-Omer',pop:14358,chomage:21.1,pauvrete:'29.0%',mediane:'18,120 €',logvac:'13.7%',prop:'33.1%',imposition:'36.0%',evol_pop:'-0.6%',solde:4,etab:664,trend:'up',code:'62765'},
+  {name:'Longuenesse',pop:10559,chomage:20.1,pauvrete:'23.0%',mediane:'19,380 €',logvac:'4.1%',prop:'52.9%',imposition:'40.0%',evol_pop:'-4.3%',solde:-26,etab:338,trend:'up',code:'62525'},
+  {name:'Wizernes',pop:138,chomage:18.2,pauvrete:'N/D',mediane:'21,270 €',logvac:'11.1%',prop:'81.4%',imposition:'N/D',evol_pop:'+1.5%',solde:0,etab:3,trend:'down',code:'62891'},
+  {name:'Bomy',pop:215,chomage:16.7,pauvrete:'N/D',mediane:'19,720 €',logvac:'3.7%',prop:'66.0%',imposition:'N/D',evol_pop:'-0.9%',solde:2,etab:3,trend:'up',code:'62109'},
+  {name:'Helfaut',pop:4974,chomage:15.9,pauvrete:'23.0%',mediane:'18,570 €',logvac:'6.1%',prop:'51.6%',imposition:'35.0%',evol_pop:'+0.6%',solde:3,etab:55,trend:'down',code:'62400'},
+  {name:'Aire-sur-la-Lys',pop:9568,chomage:15.5,pauvrete:'19.0%',mediane:'20,730 €',logvac:'10.9%',prop:'61.1%',imposition:'43.0%',evol_pop:'-3.0%',solde:-51,etab:339,trend:'up',code:'62014'},
+  {name:'Renty',pop:247,chomage:15.5,pauvrete:'N/D',mediane:'20,620 €',logvac:'12.3%',prop:'72.4%',imposition:'N/D',evol_pop:'+2.9%',solde:2,etab:7,trend:'down',code:'62723'},
+  {name:'Arques',pop:9526,chomage:13.8,pauvrete:'20.0%',mediane:'19,590 €',logvac:'5.2%',prop:'58.2%',imposition:'41.0%',evol_pop:'-3.3%',solde:-7,etab:304,trend:'up',code:'62040'},
+  {name:'Dennebrœucq',pop:222,chomage:13.7,pauvrete:'N/D',mediane:'21,510 €',logvac:'5.7%',prop:'85.6%',imposition:'N/D',evol_pop:'+4.2%',solde:-3,etab:4,trend:'down',code:'62234'},
+  {name:'Moulle',pop:87,chomage:13.5,pauvrete:'N/D',mediane:'N/D',logvac:'10.0%',prop:'82.4%',imposition:'N/D',evol_pop:'-8.4%',solde:0,etab:3,trend:'up',code:'62593'},
+  {name:'Cléty',pop:1766,chomage:12.1,pauvrete:'N/D',mediane:'20,790 €',logvac:'7.7%',prop:'68.9%',imposition:'N/D',evol_pop:'-0.6%',solde:-2,etab:28,trend:'up',code:'62197'},
+  {name:'Esquerdes',pop:337,chomage:11.9,pauvrete:'N/D',mediane:'19,540 €',logvac:'13.6%',prop:'86.7%',imposition:'N/D',evol_pop:'+2.7%',solde:2,etab:5,trend:'down',code:'62304'},
+  {name:'Lumbres',pop:3577,chomage:11.5,pauvrete:'19.0%',mediane:'19,780 €',logvac:'7.9%',prop:'56.7%',imposition:'38.0%',evol_pop:'-2.9%',solde:-4,etab:117,trend:'up',code:'62534'},
+  {name:'Vaudringhem',pop:243,chomage:11.3,pauvrete:'N/D',mediane:'21,440 €',logvac:'12.3%',prop:'80.6%',imposition:'N/D',evol_pop:'-8.6%',solde:2,etab:7,trend:'up',code:'62855'},
+  {name:'Nielles-lès-Blequin',pop:1081,chomage:11.0,pauvrete:'N/D',mediane:'21,170 €',logvac:'6.6%',prop:'70.6%',imposition:'N/D',evol_pop:'+13.3%',solde:8,etab:13,trend:'down',code:'62603'},
+  {name:'Elnes',pop:847,chomage:10.9,pauvrete:'N/D',mediane:'20,940 €',logvac:'4.4%',prop:'73.6%',imposition:'N/D',evol_pop:'-9.4%',solde:-3,etab:7,trend:'up',code:'62292'},
+  {name:'Blequin',pop:1000,chomage:10.2,pauvrete:'N/D',mediane:'23,930 €',logvac:'6.0%',prop:'75.1%',imposition:'N/D',evol_pop:'+0.3%',solde:-3,etab:36,trend:'down',code:'62097'},
+  {name:'Remilly-Wirquin',pop:3007,chomage:10.1,pauvrete:'19.0%',mediane:'20,320 €',logvac:'5.0%',prop:'69.0%',imposition:'40.0%',evol_pop:'+1.2%',solde:1,etab:71,trend:'down',code:'62711'},
+  {name:'Mentque-Nortbécourt',pop:313,chomage:9.9,pauvrete:'N/D',mediane:'22,020 €',logvac:'3.1%',prop:'85.4%',imposition:'N/D',evol_pop:'+5.4%',solde:-1,etab:2,trend:'down',code:'62556'},
+  {name:'Mametz',pop:1985,chomage:9.7,pauvrete:'N/D',mediane:'21,350 €',logvac:'4.0%',prop:'76.0%',imposition:'N/D',evol_pop:'-0.3%',solde:3,etab:33,trend:'up',code:'62543'},
+  {name:'Tournehem-sur-la-Hem',pop:288,chomage:9.5,pauvrete:'N/D',mediane:'22,200 €',logvac:'10.2%',prop:'90.9%',imposition:'N/D',evol_pop:'+6.7%',solde:2,etab:10,trend:'down',code:'62831'},
+  {name:'Tilques',pop:824,chomage:9.0,pauvrete:'N/D',mediane:'19,880 €',logvac:'9.3%',prop:'79.5%',imposition:'N/D',evol_pop:'-2.9%',solde:-9,etab:21,trend:'up',code:'62812'},
+  {name:'Hallines',pop:661,chomage:8.9,pauvrete:'N/D',mediane:'21,480 €',logvac:'9.4%',prop:'82.5%',imposition:'N/D',evol_pop:'+3.4%',solde:-2,etab:18,trend:'down',code:'62382'},
+  {name:'Bellinghem',pop:1321,chomage:8.8,pauvrete:'N/D',mediane:'25,490 €',logvac:'5.5%',prop:'86.0%',imposition:'N/D',evol_pop:'+2.4%',solde:-4,etab:26,trend:'down',code:'62075'},
+  {name:'Rely',pop:1493,chomage:8.5,pauvrete:'N/D',mediane:'23,380 €',logvac:'3.3%',prop:'72.5%',imposition:'N/D',evol_pop:'-6.7%',solde:3,etab:109,trend:'up',code:'62727'},
+  {name:'Dohem',pop:479,chomage:8.4,pauvrete:'N/D',mediane:'23,350 €',logvac:'8.1%',prop:'86.4%',imposition:'N/D',evol_pop:'+6.2%',solde:3,etab:9,trend:'down',code:'62248'},
+  {name:'Enguinegatte',pop:510,chomage:8.4,pauvrete:'N/D',mediane:'23,280 €',logvac:'4.4%',prop:'81.0%',imposition:'N/D',evol_pop:'+0.2%',solde:0,etab:7,trend:'down',code:'62286'},
+  {name:'Éperlecques',pop:1600,chomage:8.3,pauvrete:'N/D',mediane:'20,530 €',logvac:'7.4%',prop:'81.2%',imposition:'N/D',evol_pop:'-0.7%',solde:10,etab:22,trend:'up',code:'62295'},
+  {name:'Saint-Martin-au-Laërt',pop:527,chomage:8.3,pauvrete:'N/D',mediane:'24,370 €',logvac:'6.9%',prop:'81.2%',imposition:'N/D',evol_pop:'+20.0%',solde:0,etab:9,trend:'down',code:'62754'},
+  {name:'Houlle',pop:1389,chomage:8.2,pauvrete:'N/D',mediane:'25,220 €',logvac:'3.6%',prop:'88.7%',imposition:'N/D',evol_pop:'+4.5%',solde:2,etab:17,trend:'down',code:'62452'},
+  {name:'Quercamps',pop:454,chomage:8.2,pauvrete:'N/D',mediane:'25,370 €',logvac:'2.1%',prop:'91.0%',imposition:'N/D',evol_pop:'+0.9%',solde:-1,etab:3,trend:'down',code:'62660'},
+  {name:'Tatinghem',pop:376,chomage:8.1,pauvrete:'N/D',mediane:'21,290 €',logvac:'8.3%',prop:'81.8%',imposition:'N/D',evol_pop:'+0.3%',solde:2,etab:9,trend:'down',code:'62800'},
+  {name:'Blendecques',pop:5076,chomage:7.9,pauvrete:'9.0%',mediane:'23,260 €',logvac:'4.5%',prop:'74.3%',imposition:'53.0%',evol_pop:'+11.3%',solde:19,etab:106,trend:'down',code:'62132'},
+  {name:'Heuringhem',pop:319,chomage:7.9,pauvrete:'N/D',mediane:'20,570 €',logvac:'11.2%',prop:'74.8%',imposition:'N/D',evol_pop:'-0.6%',solde:3,etab:11,trend:'up',code:'62437'},
+  {name:'Clairmarais',pop:244,chomage:7.3,pauvrete:'N/D',mediane:'24,050 €',logvac:'10.3%',prop:'79.8%',imposition:'N/D',evol_pop:'-8.3%',solde:4,etab:4,trend:'up',code:'62221'},
+  {name:'Fléchín',pop:604,chomage:7.3,pauvrete:'N/D',mediane:'25,750 €',logvac:'5.3%',prop:'84.3%',imposition:'N/D',evol_pop:'+6.3%',solde:1,etab:48,trend:'down',code:'62355'},
+  {name:'Ouve-Wirquin',pop:496,chomage:7.3,pauvrete:'N/D',mediane:'20,600 €',logvac:'7.3%',prop:'82.9%',imposition:'N/D',evol_pop:'-2.6%',solde:0,etab:10,trend:'up',code:'62644'},
+  {name:'Pihem',pop:928,chomage:7.2,pauvrete:'N/D',mediane:'23,920 €',logvac:'3.9%',prop:'82.8%',imposition:'N/D',evol_pop:'-3.0%',solde:4,etab:15,trend:'up',code:'62656'},
+  {name:'Racquinghem',pop:711,chomage:7.0,pauvrete:'N/D',mediane:'26,470 €',logvac:'5.6%',prop:'83.5%',imposition:'N/D',evol_pop:'-3.1%',solde:-3,etab:21,trend:'up',code:'62680'},
+  {name:'Campagne-lès-Wardrecques',pop:1300,chomage:6.6,pauvrete:'N/D',mediane:'23,910 €',logvac:'3.4%',prop:'86.3%',imposition:'N/D',evol_pop:'+6.3%',solde:4,etab:43,trend:'down',code:'62205'},
+  {name:'Moringhem',pop:579,chomage:6.4,pauvrete:'N/D',mediane:'19,930 €',logvac:'5.3%',prop:'72.3%',imposition:'N/D',evol_pop:'-4.8%',solde:-1,etab:11,trend:'up',code:'62583'},
+  {name:'Wardrecques',pop:1061,chomage:6.4,pauvrete:'N/D',mediane:'25,470 €',logvac:'5.0%',prop:'82.7%',imposition:'N/D',evol_pop:'+19.2%',solde:-3,etab:26,trend:'down',code:'62905'},
+  {name:'Acquin-Westbécourt',pop:579,chomage:6.1,pauvrete:'N/D',mediane:'27,470 €',logvac:'2.3%',prop:'85.1%',imposition:'N/D',evol_pop:'-9.2%',solde:2,etab:6,trend:'up',code:'62003'},
+  {name:'Nordausques',pop:62,chomage:6.1,pauvrete:'N/D',mediane:'N/D',logvac:'10.3%',prop:'75.0%',imposition:'N/D',evol_pop:'-12.7%',solde:0,etab:7,trend:'up',code:'62607'},
+  {name:'Laires',pop:1049,chomage:6.0,pauvrete:'N/D',mediane:'25,030 €',logvac:'6.2%',prop:'86.2%',imposition:'N/D',evol_pop:'+6.4%',solde:-3,etab:16,trend:'down',code:'62476'},
+  {name:'Febvin-Palfart',pop:343,chomage:5.9,pauvrete:'N/D',mediane:'24,480 €',logvac:'4.4%',prop:'87.1%',imposition:'N/D',evol_pop:'-3.9%',solde:0,etab:5,trend:'up',code:'62315'},
+  {name:'Louches',pop:1630,chomage:5.6,pauvrete:'N/D',mediane:'28,250 €',logvac:'3.6%',prop:'88.9%',imposition:'N/D',evol_pop:'+2.8%',solde:2,etab:39,trend:'down',code:'62529'},
+  {name:'Leulinghem',pop:263,chomage:4.1,pauvrete:'N/D',mediane:'23,840 €',logvac:'7.3%',prop:'73.5%',imposition:'N/D',evol_pop:'+6.0%',solde:3,etab:37,trend:'down',code:'62504'},
+  {name:'Clerques',pop:347,chomage:3.8,pauvrete:'N/D',mediane:'25,930 €',logvac:'6.4%',prop:'83.0%',imposition:'N/D',evol_pop:'+2.4%',solde:0,etab:13,trend:'down',code:'62198'}
 ];
 
 let sortCol=0,sortDir=1;
@@ -745,17 +829,20 @@ function renderCommunes(data){
   tb.innerHTML=data.map(c=>{
     const maxCh=25;
     const pct=Math.round((c.chomage/maxCh)*100);
-    const color=c.chomage>18?'#C0392B':c.chomage>13?'#E67E22':c.chomage>9?'#1B3A6B':'#27AE60';
-    const tr=c.trend==='up'?'<span class="trend-up">▼ déclin</span>':c.trend==='down'?'<span class="trend-down">▲ croissance</span>':'<span class="trend-neu">→ stable</span>';
-    const inseeUrl=`https://www.insee.fr/fr/statistiques/1405599?geo=COM-${c.code}`;
+    const col=c.chomage>18?'#C0392B':c.chomage>13?'#E67E22':c.chomage>9?'#1B3A6B':'#27AE60';
+    const evol=c.evol_pop;
+    const evolCol=evol&&evol.startsWith('-')?'#C0392B':evol&&evol.startsWith('+')?'#27AE60':'var(--muted)';
+    const url=`https://www.insee.fr/fr/statistiques/1405599?geo=COM-${c.code}`;
     return `<tr>
-      <td><a href="${inseeUrl}" target="_blank" style="color:var(--text);text-decoration:none;font-weight:500">${c.name}</a></td>
+      <td><a href="${url}" target="_blank" style="color:var(--text);text-decoration:none;font-weight:500">${c.name}</a></td>
       <td>${c.pop?c.pop.toLocaleString('fr-FR'):'N/D'}</td>
-      <td><div class="chomage-bar-wrap"><span style="min-width:38px;font-weight:500;color:${color}">${c.chomage?c.chomage.toFixed(1)+'%':'N/D'}</span><div class="chomage-bar-bg"><div class="chomage-bar" style="width:${pct}%;background:${color}"></div></div></div></td>
-      <td style="color:var(--muted)">${c.pauvrete}</td>
-      <td style="color:var(--muted);font-size:12px">${c.mediane}</td>
-      <td>${tr}</td>
-      <td>${c.etab>0?c.etab.toLocaleString('fr-FR'):'N/D'}</td>
+      <td><div class="chomage-bar-wrap"><span style="min-width:36px;font-weight:500;color:${col}">${c.chomage?c.chomage.toFixed(1)+'%':'N/D'}</span><div class="chomage-bar-bg"><div class="chomage-bar" style="width:${pct}%;background:${col}"></div></div></div></td>
+      <td style="color:var(--muted);font-size:12px">${c.pauvrete}</td>
+      <td style="font-size:12px">${c.mediane}</td>
+      <td style="color:var(--muted);font-size:12px">${c.logvac}</td>
+      <td style="color:var(--muted);font-size:12px">${c.prop}</td>
+      <td style="font-size:12px;font-weight:500;color:${evolCol}">${c.evol_pop}</td>
+      <td style="font-size:12px">${c.etab>0?c.etab.toLocaleString('fr-FR'):'N/D'}</td>
     </tr>`;
   }).join('');
 }
@@ -768,7 +855,7 @@ function filterCommunes(){
 
 function sortTable(col){
   if(sortCol===col) sortDir*=-1; else {sortCol=col;sortDir=1;}
-  const keys=['name','pop','chomage','pauvrete','mediane','etab','trend'];
+  const keys=['name','pop','chomage','pauvrete','mediane','logvac','prop','evol_pop','etab'];
   const k=keys[col];
   const sorted=[...communes].sort((a,b)=>{
     const av=typeof a[k]==='string'?a[k]:a[k];
