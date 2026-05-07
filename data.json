@@ -1,0 +1,194 @@
+{
+  "meta": {
+    "generated_at": "2026-05-07T08:05:39.948660Z",
+    "generated_date": "2026-05-07",
+    "territory": "Communauté d'agglomération du Pays de Saint-Omer (CAPSO)",
+    "epci_code": "200069037",
+    "version": "1.0"
+  },
+  "kpis": {
+    "chomage": {
+      "valeur": 10.0,
+      "unite": "%",
+      "vs_national": -0.5,
+      "libelle": "Taux de chômage CAPSO"
+    },
+    "creations": {
+      "valeur": 0,
+      "unite": "entreprises",
+      "evolution_pct": 8.2,
+      "libelle": "Créations d'entreprises (12 mois)"
+    },
+    "offres": {
+      "valeur": 2835,
+      "unite": "offres",
+      "evolution": "stable",
+      "libelle": "Offres d'emploi actives"
+    },
+    "population_active": {
+      "valeur": 58400,
+      "unite": "personnes",
+      "evolution_pct": -0.4,
+      "libelle": "Population active CAPSO"
+    }
+  },
+  "chomage": {
+    "communes": {
+      "62765": {
+        "nom": "Saint-Omer",
+        "taux": 12.1,
+        "evolution": "+0.2"
+      },
+      "62498": {
+        "nom": "Longuenesse",
+        "taux": 10.3,
+        "evolution": "0.0"
+      },
+      "62132": {
+        "nom": "Blendecques",
+        "taux": 9.8,
+        "evolution": "-0.3"
+      },
+      "62041": {
+        "nom": "Arques",
+        "taux": 11.2,
+        "evolution": "+0.4"
+      },
+      "62014": {
+        "nom": "Aire-sur-la-Lys",
+        "taux": 13.4,
+        "evolution": "+0.1"
+      },
+      "62534": {
+        "nom": "Lumbres",
+        "taux": 8.9,
+        "evolution": "-0.2"
+      },
+      "62891": {
+        "nom": "Wizernes",
+        "taux": 9.1,
+        "evolution": "0.0"
+      },
+      "62812": {
+        "nom": "Tilques",
+        "taux": 8.2,
+        "evolution": "-0.1"
+      },
+      "62294": {
+        "nom": "Éperlecques",
+        "taux": 9.5,
+        "evolution": "0.0"
+      },
+      "62607": {
+        "nom": "Nordausques",
+        "taux": 7.8,
+        "evolution": "-0.4"
+      }
+    },
+    "moyenne_nationale": 10.5,
+    "source": "INSEE T4 2024"
+  },
+  "offres": {
+    "secteurs": [
+      {
+        "nom": "Industrie",
+        "part": 34,
+        "offres": 964,
+        "couleur": "#0D1B40"
+      },
+      {
+        "nom": "Commerce",
+        "part": 22,
+        "offres": 624,
+        "couleur": "#2E5FA3"
+      },
+      {
+        "nom": "Services aux personnes",
+        "part": 18,
+        "offres": 510,
+        "couleur": "#4A8BC4"
+      },
+      {
+        "nom": "BTP",
+        "part": 12,
+        "offres": 340,
+        "couleur": "#B8963E"
+      },
+      {
+        "nom": "Logistique",
+        "part": 8,
+        "offres": 227,
+        "couleur": "#639922"
+      },
+      {
+        "nom": "Agriculture",
+        "part": 6,
+        "offres": 170,
+        "couleur": "#9EB3D4"
+      }
+    ],
+    "total": 2835,
+    "zone": "Saint-Omer (ZE 2208)"
+  },
+  "creations": {
+    "mensuel": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0
+    },
+    "total_annee": 0,
+    "historique": {
+      "2022": [
+        68,
+        71,
+        82,
+        90,
+        96,
+        104,
+        78,
+        68,
+        98,
+        112,
+        104,
+        91
+      ],
+      "2023": [
+        72,
+        68,
+        88,
+        95,
+        102,
+        110,
+        85,
+        71,
+        105,
+        118,
+        109,
+        98
+      ],
+      "2024": [
+        78,
+        82,
+        95,
+        112,
+        108,
+        124,
+        89,
+        76,
+        118,
+        131,
+        122,
+        112
+      ]
+    }
+  }
+}
