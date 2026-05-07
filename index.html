@@ -337,118 +337,346 @@ footer strong { color: rgba(255,255,255,0.8); }
   </div>
 
   <div class="two-col">
-    <div class="card">
-      <div class="section-title">Chômage par commune</div>
-      <div class="section-sub">Taux de chômage localisé — T4 2025 · Ligne pointillée : moyenne nationale</div>
-      <div style="position:relative;height:240px;">
-        <canvas id="c1" role="img" aria-label="Taux de chômage par commune de l'Audomarois, Aire-sur-la-Lys en tête à 13.4%"></canvas>
-      </div>
-      <div class="source-tag">📊 INSEE — Taux de chômage localisés 2024</div>
-    </div>
-    <div class="card">
-      <div class="section-title">Offres d'emploi par secteur</div>
-      <div class="section-sub">Demandes enregistrées à France Travail — cumul 12 mois glissants</div>
-      <div style="position:relative;height:240px;">
-        <canvas id="c2" role="img" aria-label="Répartition des offres d'emploi par secteur : Industrie 34%, Commerce 22%"></canvas>
-      </div>
-      <div class="source-tag">📊 France Travail — Statistiques marché du travail 2025</div>
-    </div>
-  </div>
-
-  <div class="two-col">
-    <div class="card">
-      <div class="section-title">Vacance des logements</div>
-      <div class="section-sub">Part des logements vacants en 2022 — top 8 communes · France : 8,2%</div>
-      <div style="position:relative;height:220px;">
-        <canvas id="cVac" role="img" aria-label="Taux de vacance logements par commune"></canvas>
-      </div>
-      <div class="source-tag">📊 INSEE RP2022 — P22_LOGVAC / P22_LOG</div>
-    </div>
-    <div class="card">
-      <div class="section-title">Dynamique démographique</div>
-      <div class="section-sub">Évolution de la population 2016→2022 · 4 communes en plus forte baisse / hausse</div>
-      <div style="position:relative;height:220px;">
-        <canvas id="cEvol" role="img" aria-label="Evolution démographique des communes 2016 à 2022"></canvas>
-      </div>
-      <div class="source-tag">📊 INSEE RP2016 & RP2022</div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="selector-row">
+      <div class="card" style="margin-bottom:1.25rem;">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:1rem;">
       <div>
-        <div class="section-title">Créations d'entreprises</div>
-        <div class="section-sub">Toutes formes juridiques — base SIRENE, données mensuelles</div>
+        <div class="section-title">Veille territoriale CAPSO</div>
+        <div class="section-sub">Projets officiels · Délibérations publiques · Marchés attribués</div>
       </div>
-      <div class="tab-group">
-        <button class="tab" onclick="setYear(2023,this)">2023</button>
-        <button class="tab active" onclick="setYear(2024,this)">2024</button>
-        <button class="tab" onclick="setYear(2025,this)">2025</button>
+      <a href="https://webdelib.ca-pso.fr/webdelibplus/" target="_blank"
+         style="display:inline-flex;align-items:center;gap:6px;background:#0D1B40;color:#fff;
+                padding:7px 14px;border-radius:8px;font-size:12px;font-weight:500;text-decoration:none;">
+        📋 Portail des délibérations →
+      </a>
+    </div>
+
+    <!-- Bandeau droit citoyen -->
+    <div style="background:#EEF4FF;border:1px solid #C7D9F5;border-radius:8px;padding:12px 16px;
+                margin-bottom:1.25rem;font-size:12px;color:#1B3A6B;display:flex;gap:12px;align-items:flex-start;">
+      <span style="font-size:20px;flex-shrink:0">⚖️</span>
+      <div>
+        <strong>Toutes les délibérations du conseil communautaire sont publiques</strong> — obligation légale (CGCT art. L2121-26).
+        Le portail <a href="https://webdelib.ca-pso.fr/webdelibplus/" target="_blank" style="color:#1B3A6B;font-weight:600">webdelib.ca-pso.fr</a>
+        donne accès à l'intégralité des décisions votées : montants, prestataires, votes. Tout citoyen peut les consulter sans justification.
+        La <a href="https://www.cada.fr/communaute-dagglomeration-du-pays-de-saint-omer-capso" target="_blank" style="color:#1B3A6B">CADA</a>
+        garantit ce droit en cas de refus.
       </div>
     </div>
-    <div style="position:relative;height:200px;">
-      <canvas id="c3" role="img" aria-label="Créations d'entreprises mensuelles dans l'Audomarois"></canvas>
+
+    <!-- Projets officiels CAPSO (sources vérifiées) -->
+    <div class="section-title" style="font-size:14px;margin-bottom:10px;">Grands projets officiels</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px;margin-bottom:1.25rem;">
+
+      <div style="border:1px solid var(--border);border-radius:10px;padding:14px;background:var(--bg);">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
+          <span style="font-size:13px;font-weight:600;color:var(--text)">La Station — Hub innovation</span>
+          <span class="badge green">En service</span>
+        </div>
+        <div style="font-size:11px;color:var(--muted);margin-bottom:8px">
+          Gare de Saint-Omer réhabilitée · FabLab · Coworking · 3 000 m²
+        </div>
+        <div style="font-size:16px;font-weight:700;color:#0D1B40;margin-bottom:6px">
+          26,4 M€ TTC
+          <span style="font-size:10px;font-weight:400;color:var(--muted)">gare + parking + passerelle</span>
+        </div>
+        <div style="font-size:10px;color:var(--muted)">
+          Cofinancé État · Région · UE ·
+          <a href="https://www.lemoniteur.fr/photo/les-travaux-de-la-station-metamorphosent-la-gare-de-saint-omer.1999954" target="_blank" style="color:#2E5FA3">Le Moniteur ✓</a> ·
+          <a href="https://www.hautsdefrance-id.fr/actualites/pays-de-saint-omer/" target="_blank" style="color:#2E5FA3">HDFID ✓</a>
+        </div>
+      </div>
+
+      <div style="border:1px solid var(--border);border-radius:10px;padding:14px;background:var(--bg);">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
+          <span style="font-size:13px;font-weight:600;color:var(--text)">Port de plaisance d'Aire-sur-la-Lys</span>
+          <span class="badge green">En service</span>
+        </div>
+        <div style="font-size:11px;color:var(--muted);margin-bottom:8px">
+          40 places · Capitainerie · Tourisme fluvial · EuroVelo 5 · Inauguré mai 2024
+        </div>
+        <div style="font-size:16px;font-weight:700;color:#0D1B40;margin-bottom:6px">
+          5,3 M€
+          <span style="font-size:10px;font-weight:400;color:var(--muted)">CAPSO 3,2M€ + partenaires</span>
+        </div>
+        <div style="font-size:10px;color:var(--muted)">
+          Dépt. 750k€ · État 250k€ · Ville 500k€ · Région 660k€ ·
+          <a href="https://www.lagazettefrance.fr/article/le-port-de-plaisance-un-nouvel-atout-pour-le-territoire" target="_blank" style="color:#2E5FA3">La Gazette ✓</a>
+        </div>
+      </div>
+
+      <div style="border:1px solid var(--border);border-radius:10px;padding:14px;background:var(--bg);">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
+          <span style="font-size:13px;font-weight:600;color:var(--text)">Clim@YserAa — Biodiversité transfrontalière</span>
+          <span class="badge amber">En cours</span>
+        </div>
+        <div style="font-size:11px;color:var(--muted);margin-bottom:8px">
+          Corridor Marais Audomarois → vallée de l'Yser · INTERREG France-Wallonie-Flandres · 2024–2028
+        </div>
+        <div style="font-size:16px;font-weight:700;color:#0D1B40;margin-bottom:6px">
+          3,6 M€
+          <span style="font-size:10px;font-weight:400;color:var(--muted)">dont 151 740 € CAPSO</span>
+        </div>
+        <div style="font-size:10px;color:var(--muted)">
+          FEDER 60% · CAPSO 40% ·
+          <a href="https://www.ca-pso.fr/agglo/projets/climayseraa/" target="_blank" style="color:#2E5FA3">CAPSO officiel ✓</a>
+        </div>
+      </div>
+
+      <div style="border:1px solid var(--border);border-radius:10px;padding:14px;background:var(--bg);">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
+          <span style="font-size:13px;font-weight:600;color:var(--text)">Action Cœur de Ville — Centre-ville Saint-Omer</span>
+          <span class="badge amber">En cours</span>
+        </div>
+        <div style="font-size:11px;color:var(--muted);margin-bottom:8px">
+          Réhabilitation · Commerce · Patrimoine · 2018–2026 · 1ère ville à signer en juin 2018
+        </div>
+        <div style="font-size:16px;font-weight:700;color:#0D1B40;margin-bottom:6px">
+          3,2 M€ État +
+          <span style="font-size:10px;font-weight:400;color:var(--muted)">total multipartenaires N/D</span>
+        </div>
+        <div style="font-size:10px;color:var(--muted)">
+          ANAH · Banque des Territoires · Action Logement ·
+          <a href="https://www.gazettenpdc.fr/article/a-saint-omer-l-etat-investit-3-2-m-dans-l-operation-c-ur-de-ville" target="_blank" style="color:#2E5FA3">La Gazette NPC ✓</a>
+        </div>
+      </div>
+
+      <div style="border:1px solid var(--border);border-radius:10px;padding:14px;background:var(--bg);">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
+          <span style="font-size:13px;font-weight:600;color:var(--text)">Cool Cities — Îlots de fraîcheur urbains</span>
+          <span class="badge amber">En cours</span>
+        </div>
+        <div style="font-size:11px;color:var(--muted);margin-bottom:8px">
+          Adaptation climatique · Végétalisation des centres-villes · Programme INTERREG
+        </div>
+        <div style="font-size:16px;font-weight:700;color:#0D1B40;margin-bottom:6px">
+          N/D
+          <span style="font-size:10px;font-weight:400;color:var(--muted)">montant à confirmer</span>
+        </div>
+        <div style="font-size:10px;color:var(--muted)">
+          <a href="https://www.ca-pso.fr/agglo/projets/cool-cities/" target="_blank" style="color:#2E5FA3">CAPSO officiel →</a>
+        </div>
+      </div>
+
+      <div style="border:1px solid var(--border);border-radius:10px;padding:14px;background:var(--bg);">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
+          <span style="font-size:13px;font-weight:600;color:var(--text)">Marchés publics récents</span>
+          <span class="badge blue">Publics</span>
+        </div>
+        <div style="font-size:11px;color:var(--muted);margin-bottom:8px">
+          Éclairage public (12 ans) · Réseaux de chaleur · Démolition post-inondations 2023–2024
+        </div>
+        <div style="font-size:16px;font-weight:700;color:#0D1B40;margin-bottom:6px">
+          4,1 M€
+          <span style="font-size:10px;font-weight:400;color:var(--muted)">3 marchés récents identifiés</span>
+        </div>
+        <div style="font-size:10px;color:var(--muted)">
+          <a href="https://www.pappers.fr/entreprise/capso-ca-du-pays-de-saint-omer-200069037" target="_blank" style="color:#2E5FA3">Pappers.fr ✓</a> ·
+          <a href="https://www.ca-pso.fr/agglo/marches-publics/" target="_blank" style="color:#2E5FA3">CAPSO marchés →</a>
+        </div>
+      </div>
+
     </div>
-    <div class="source-tag">📊 INSEE — Base SIRENE, données mensuelles agrégées par code postal</div>
+
+    <!-- Accès à la transparence -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px;">
+      <a href="https://webdelib.ca-pso.fr/webdelibplus/" target="_blank"
+         style="display:flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid var(--border);
+                border-radius:8px;font-size:12px;color:var(--text);text-decoration:none;background:var(--bg);">
+        📋 <div><div style="font-weight:500">Délibérations du conseil</div><div style="font-size:10px;color:var(--muted)">Toutes les décisions votées</div></div>
+      </a>
+      <a href="https://www.ca-pso.fr/agglo/budget/" target="_blank"
+         style="display:flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid var(--border);
+                border-radius:8px;font-size:12px;color:var(--text);text-decoration:none;background:var(--bg);">
+        💰 <div><div style="font-weight:500">Budget CAPSO</div><div style="font-size:10px;color:var(--muted)">Budgets primitifs & comptes</div></div>
+      </a>
+      <a href="https://www.ca-pso.fr/agglo/marches-publics/" target="_blank"
+         style="display:flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid var(--border);
+                border-radius:8px;font-size:12px;color:var(--text);text-decoration:none;background:var(--bg);">
+        📄 <div><div style="font-weight:500">Marchés publics</div><div style="font-size:10px;color:var(--muted)">Appels d'offres & attributions</div></div>
+      </a>
+      <a href="https://www.ccomptes.fr/sites/default/files/2023-10/HFR2023-013.pdf" target="_blank"
+         style="display:flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid var(--border);
+                border-radius:8px;font-size:12px;color:var(--text);text-decoration:none;background:var(--bg);">
+        ⚖️ <div><div style="font-weight:500">Rapport Chambre des Comptes</div><div style="font-size:10px;color:var(--muted)">Audit 2023 — Cour des Comptes</div></div>
+      </a>
+      <a href="https://www.ca-pso.fr/agglo/publications/ra/" target="_blank"
+         style="display:flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid var(--border);
+                border-radius:8px;font-size:12px;color:var(--text);text-decoration:none;background:var(--bg);">
+        📊 <div><div style="font-weight:500">Rapports d'activité</div><div style="font-size:10px;color:var(--muted)">Bilan annuel des services</div></div>
+      </a>
+      <a href="https://www.ca-pso.fr/agglo/projets-liste/" target="_blank"
+         style="display:flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid var(--border);
+                border-radius:8px;font-size:12px;color:var(--text);text-decoration:none;background:var(--bg);">
+        🗺️ <div><div style="font-weight:500">Tous les projets CAPSO</div><div style="font-size:10px;color:var(--muted)">Liste officielle complète</div></div>
+      </a>
+    </div>
+
+    <div class="source-tag" style="margin-top:12px;">
+      📊 Sources : CAPSO officiel · La Gazette NPC · Le Moniteur · Pappers.fr · Cour des Comptes · CADA · ✓ = montant vérifié par source indépendante
+    </div>
   </div>
 
-  <div class="card">
-    <div class="section-title">Investissements publics structurants</div>
-    <div class="section-sub">Projets CAPSO & partenaires — 2023 à 2026</div>
+  <div class="section-sub">Projets CAPSO & partenaires — 2023 à 2026</div>
+    <div style="background:#FEF3C7;border:1px solid #F59E0B;border-radius:8px;padding:10px 14px;margin-bottom:14px;font-size:12px;color:#92400E;">
+      ⚠ Les montants marqués <strong>✓ vérifié</strong> sont issus de sources officielles citées. Les projets sans montant indiqué nécessitent une confirmation auprès de la CAPSO.
+    </div>
     <div class="invest-list">
       <div class="invest-row">
         <div class="invest-icon" style="background:#EEF2FF">🏗️</div>
         <div class="invest-body">
-          <div class="invest-name">La Station — Hub d'innovation (gare de Saint-Omer)</div>
-          <div class="invest-desc">FabLab · Coworking · Campus Connecté · 2 500 m²</div>
+          <div class="invest-name">
+            La Station — Hub d'innovation (gare de Saint-Omer)
+            <span style="font-size:10px;color:#27AE60;margin-left:6px">✓ vérifié</span>
+          </div>
+          <div class="invest-desc">FabLab · Coworking · Campus Connecté · 3 000 m² · 
+            <a href="https://www.hautsdefrance-id.fr/actualites/pays-de-saint-omer/" target="_blank" style="color:#2E5FA3;font-size:10px">Source HDFID →</a>
+            · <a href="https://www.lemoniteur.fr/photo/les-travaux-de-la-station-metamorphosent-la-gare-de-saint-omer.1999954" target="_blank" style="color:#2E5FA3;font-size:10px">Le Moniteur →</a>
+          </div>
+          <div style="font-size:10px;color:var(--muted);margin-top:2px">18 M€ pour la gare · 26,4 M€ TTC total (gare + parking + passerelle) · cofinancé État/Région/UE</div>
         </div>
         <span class="badge green">En service</span>
-        <div class="invest-amount">18 M€</div>
+        <div class="invest-amount">18–26 M€</div>
       </div>
       <div class="invest-row">
         <div class="invest-icon" style="background:#F0FDF4">🎓</div>
         <div class="invest-body">
-          <div class="invest-name">Cité des Métiers de Saint-Omer</div>
-          <div class="invest-desc">Orientation professionnelle · 4e en Hauts-de-France · Ouverte mars 2025</div>
+          <div class="invest-name">
+            Cité des Métiers de Saint-Omer
+            <span style="font-size:10px;color:#E67E22;margin-left:6px">montant à confirmer</span>
+          </div>
+          <div class="invest-desc">Orientation professionnelle · 4e en Hauts-de-France · Ouverte mars 2025 · 
+            <a href="https://www.hautsdefrance-id.fr/actualites/pays-de-saint-omer/" target="_blank" style="color:#2E5FA3;font-size:10px">Source HDFID →</a>
+          </div>
+          <div style="font-size:10px;color:var(--muted);margin-top:2px">Montant total non publié — à demander à la CAPSO</div>
         </div>
         <span class="badge green">En service</span>
-        <div class="invest-amount">4,2 M€</div>
+        <div class="invest-amount" style="color:var(--muted);font-size:14px">N/D</div>
       </div>
       <div class="invest-row">
         <div class="invest-icon" style="background:#FFFBEB">💼</div>
         <div class="invest-body">
-          <div class="invest-name">MIPE — Maison de l'Insertion Professionnelle et de l'Emploi</div>
-          <div class="invest-desc">Fusion Mission Locale + PLIE · Lancée février 2025</div>
+          <div class="invest-name">
+            MIPE — Maison de l'Insertion Professionnelle et de l'Emploi
+            <span style="font-size:10px;color:#E67E22;margin-left:6px">montant à confirmer</span>
+          </div>
+          <div class="invest-desc">Fusion Mission Locale + PLIE · Lancée février 2025 · 
+            <a href="https://www.hautsdefrance-id.fr/actualites/pays-de-saint-omer/" target="_blank" style="color:#2E5FA3;font-size:10px">Source HDFID →</a>
+          </div>
+          <div style="font-size:10px;color:var(--muted);margin-top:2px">Montant total non publié — à demander à la CAPSO</div>
         </div>
         <span class="badge green">En service</span>
-        <div class="invest-amount">2,8 M€</div>
+        <div class="invest-amount" style="color:var(--muted);font-size:14px">N/D</div>
       </div>
       <div class="invest-row">
         <div class="invest-icon" style="background:#F0F9FF">🏛️</div>
         <div class="invest-body">
-          <div class="invest-name">Réhabilitation centre-ville de Saint-Omer</div>
-          <div class="invest-desc">Action Cœur de Ville · Commerce · Patrimoine · 2023–2026</div>
+          <div class="invest-name">
+            Réhabilitation centre-ville — Action Cœur de Ville
+            <span style="font-size:10px;color:#27AE60;margin-left:6px">✓ partiellement vérifié</span>
+          </div>
+          <div class="invest-desc">Commerce · Patrimoine · 2018–2026 · 
+            <a href="https://www.gazettenpdc.fr/article/a-saint-omer-l-etat-investit-3-2-m-dans-l-operation-c-ur-de-ville" target="_blank" style="color:#2E5FA3;font-size:10px">La Gazette NPC →</a>
+          </div>
+          <div style="font-size:10px;color:var(--muted);margin-top:2px">3,2 M€ = contribution État seule (confirmée) · total multipartenaires non publié</div>
         </div>
         <span class="badge amber">En cours</span>
-        <div class="invest-amount">11,5 M€</div>
+        <div class="invest-amount">3,2 M€ +</div>
       </div>
       <div class="invest-row">
         <div class="invest-icon" style="background:#F0FDF4">🌿</div>
         <div class="invest-body">
-          <div class="invest-name">Marais audomarois — Éco-tourisme & nature</div>
-          <div class="invest-desc">Sentiers · Valorisation patrimoine naturel · Coopération européenne eau</div>
+          <div class="invest-name">
+            Marais audomarois — Éco-tourisme & nature
+            <span style="font-size:10px;color:#E67E22;margin-left:6px">montant à confirmer</span>
+          </div>
+          <div class="invest-desc">Label Man & Biosphere UNESCO 2024 · Coopération européenne eau · 
+            <a href="https://www.hautsdefrance-id.fr/actualites/pays-de-saint-omer/" target="_blank" style="color:#2E5FA3;font-size:10px">Source HDFID →</a>
+          </div>
+          <div style="font-size:10px;color:var(--muted);margin-top:2px">Montant total non publié — à demander à la CAPSO ou Région HdF</div>
         </div>
-        <span class="badge blue">Planifié</span>
-        <div class="invest-amount">3,1 M€</div>
+        <span class="badge blue">En cours</span>
+        <div class="invest-amount" style="color:var(--muted);font-size:14px">N/D</div>
       </div>
     </div>
-    <div class="source-tag">📊 CAPSO · Conseil régional Hauts-de-France · data.gouv.fr</div>
+    <div class="source-tag">📊 Sources : HDFID · Le Moniteur · La Gazette NPC · CAPSO · Cour des Comptes</div>
   </div>
 
 </div>
 
 <!-- ═══ PAGE COMMUNES ═══ -->
+
+  <div class="card" style="margin-bottom:1.25rem;">
+    <div class="section-title">Portrait radar — CAPSO vs Pas-de-Calais vs France</div>
+    <div class="section-sub">Indicateurs normalisés — plus la surface est grande, plus la situation est favorable</div>
+    <div style="position:relative;height:320px;max-width:500px;margin:0 auto;">
+      <canvas id="cRadar" role="img" aria-label="Comparaison radar CAPSO Pas-de-Calais France sur 5 indicateurs"></canvas>
+    </div>
+    <div class="source-tag">📊 INSEE RP2022 · Filosofi 2021 — Indicateurs normalisés pour comparaison visuelle</div>
+  </div>
+
 <div id="page-communes" class="page">
+
+  <div class="card" style="margin-bottom:1.25rem;">
+    <div class="section-title">Positionnement de l'Audomarois</div>
+    <div class="section-sub">Comparaison CAPSO · Pas-de-Calais · France — Source : INSEE RP2022 & Filosofi 2021</div>
+    <div style="overflow-x:auto;margin-top:1rem;">
+      <table style="width:100%;border-collapse:collapse;font-size:13px;">
+        <thead>
+          <tr style="border-bottom:2px solid var(--border);">
+            <th style="text-align:left;padding:8px 12px;color:var(--muted);font-weight:500;font-size:11px;text-transform:uppercase;letter-spacing:.05em">Indicateur</th>
+            <th style="text-align:right;padding:8px 12px;color:#0D1B40;font-weight:600;font-size:11px;text-transform:uppercase">CAPSO</th>
+            <th style="text-align:right;padding:8px 12px;color:var(--muted);font-weight:500;font-size:11px;text-transform:uppercase">Pas-de-Calais</th>
+            <th style="text-align:right;padding:8px 12px;color:var(--muted);font-weight:500;font-size:11px;text-transform:uppercase">France</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--border);background:var(--light-red, #fdecea);">
+            <td style="padding:10px 12px;font-weight:500">Taux de chômage (recensement 2022)</td>
+            <td style="padding:10px 12px;text-align:right;font-weight:700;color:#C0392B">14,1 %</td>
+            <td style="padding:10px 12px;text-align:right;color:var(--muted)">14,1 %</td>
+            <td style="padding:10px 12px;text-align:right;color:var(--muted)">13,4 %</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:10px 12px;font-weight:500">Taux de pauvreté (Filosofi 2021)</td>
+            <td style="padding:10px 12px;text-align:right;font-weight:700;color:#C0392B">22,0 %</td>
+            <td style="padding:10px 12px;text-align:right;color:var(--muted)">22,0 %</td>
+            <td style="padding:10px 12px;text-align:right;color:var(--muted)">14,4 %</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);background:var(--bg);">
+            <td style="padding:10px 12px;font-weight:500">Revenu médian par UC (2021)</td>
+            <td style="padding:10px 12px;text-align:right;font-weight:700;color:#C0392B">21 890 €</td>
+            <td style="padding:10px 12px;text-align:right;color:var(--muted)">20,698 €</td>
+            <td style="padding:10px 12px;text-align:right;color:var(--muted)">24 330 €</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:10px 12px;font-weight:500">Logements vacants (2022)</td>
+            <td style="padding:10px 12px;text-align:right;font-weight:500">6,8 %</td>
+            <td style="padding:10px 12px;text-align:right;color:var(--muted)">7,2 %</td>
+            <td style="padding:10px 12px;text-align:right;color:var(--muted)">8,0 %</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);background:var(--bg);">
+            <td style="padding:10px 12px;font-weight:500">Part des ménages propriétaires (2022)</td>
+            <td style="padding:10px 12px;text-align:right;font-weight:500">67,1 %</td>
+            <td style="padding:10px 12px;text-align:right;color:var(--muted)">58,2 %</td>
+            <td style="padding:10px 12px;text-align:right;color:var(--muted)">57,7 %</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-weight:500">Part des ménages fiscaux imposés (2021)</td>
+            <td style="padding:10px 12px;text-align:right;font-weight:500">40,0 %</td>
+            <td style="padding:10px 12px;text-align:right;color:var(--muted)">41,5 %</td>
+            <td style="padding:10px 12px;text-align:right;color:var(--muted)">54,0 %</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="display:flex;gap:16px;margin-top:12px;flex-wrap:wrap;">
+      <span class="source-tag">📊 INSEE RP2022 · Filosofi 2021 · Calculs agrégés CAPSO</span>
+      <span style="font-size:11px;color:var(--muted);padding-top:4px;">
+        ⚠ Le taux de chômage ici est celui du recensement (≠ taux BIT) — il inclut les personnes se déclarant au chômage sans nécessairement chercher activement un emploi.
+      </span>
+    </div>
+  </div>
+
   <div class="page-header">
     <div class="page-eyebrow">Territoire</div>
     <h2>Les communes de l'Audomarois</h2>
@@ -865,6 +1093,27 @@ function sortTable(col){
   renderCommunes(sorted);
 }
 
+
+// Radar chart: CAPSO vs DEP-62 vs France
+new Chart(document.getElementById('cRadar'),{
+  type:'radar',
+  data:{
+    labels:['Chômage\n(inversé)','Revenu médian\n(normalisé)','Propriétaires','Emploi\ndensité','Hors\npauvreté'],
+    datasets:[
+      {label:'CAPSO',data:[100-14.1, (21890/25000)*100, 67.1, 45, 100-22.0],
+       borderColor:'#1B3A6B',backgroundColor:'rgba(27,58,107,0.1)',borderWidth:2,pointRadius:4},
+      {label:'Pas-de-Calais',data:[100-14.1,(20698/25000)*100,58.2,43,100-22.0],
+       borderColor:'#C0392B',backgroundColor:'rgba(192,57,43,0.05)',borderWidth:1.5,pointRadius:3,borderDash:[4,3]},
+      {label:'France',data:[100-13.4,(24330/25000)*100,57.7,54,100-14.4],
+       borderColor:'#C9A84C',backgroundColor:'rgba(201,168,76,0.05)',borderWidth:1.5,pointRadius:3,borderDash:[2,2]}
+    ]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    scales:{r:{min:30,max:100,ticks:{display:false},pointLabels:{font:{size:10}}}},
+    plugins:{legend:{position:'bottom',labels:{font:{size:11},boxWidth:10}}}
+  }
+});
 renderCommunes(communes);
 </script>
 </body>
