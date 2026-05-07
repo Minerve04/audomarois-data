@@ -1,0 +1,35 @@
+name: Mise à jour des données économiques
+
+on:
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Récupération du code
+        uses: actions/checkout@v4
+
+      - name: Installation Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Collecte des données open data
+        env:
+          FT_CLIENT_ID: ${{ secrets.FT_CLIENT_ID }}
+          FT_CLIENT_SECRET: ${{ secrets.FT_CLIENT_SECRET }}
+        run: python fetch_data.py
+
+      - name: Commit et push du fichier data.json
+        run: |
+          git config user.name  "Audomarois Data Bot"
+          git config user.email "bot@audomarois-data.fr"
+          git add data.json
+          git diff --staged --quiet || git commit -m "Données mises à jour — $(date -u '+%d/%m/%Y %H:%M UTC')"
+          git push
