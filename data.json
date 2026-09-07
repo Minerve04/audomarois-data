@@ -1,7 +1,7 @@
 {
   "meta": {
-    "generated_at": "2026-09-06T07:43:41.225380Z",
-    "generated_date": "2026-09-06",
+    "generated_at": "2026-09-07T08:02:30.872579Z",
+    "generated_date": "2026-09-07",
     "territory": "Communauté d'agglomération du Pays de Saint-Omer (CAPSO)",
     "epci_code": "200069037",
     "version": "1.0"
@@ -14,7 +14,7 @@
       "libelle": "Taux de chômage CAPSO"
     },
     "creations": {
-      "valeur": 0,
+      "valeur": 1,
       "unite": "entreprises",
       "evolution_pct": 8.2,
       "libelle": "Créations d'entreprises (12 mois)"
@@ -138,14 +138,14 @@
       "4": 0,
       "5": 0,
       "6": 0,
-      "7": 0,
+      "7": 1,
       "8": 0,
       "9": 0,
       "10": 0,
       "11": 0,
       "12": 0
     },
-    "total_annee": 0,
+    "total_annee": 1,
     "historique": {
       "2022": [
         68,
